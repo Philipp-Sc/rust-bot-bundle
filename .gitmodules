@@ -1,0 +1,3 @@
+[submodule "rust-bot/bin/assets/chain-registry"]
+	path = rust-bot/bin/assets/chain-registry
+	url = https://github.com/cosmos/chain-registry.git

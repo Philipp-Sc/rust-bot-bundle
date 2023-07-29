@@ -1,0 +1,41 @@
+[package]
+name = "rust-bot"
+description = "A versatile and extensible bot to manages tasks. Register tasks through plugins with direct database access, enabling efficient storage and retrieval."
+authors = ["Philipp Schlütermann <philipp.schluetermann@udo.edu>"]
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "rust-bot"
+
+[dependencies]
+
+anyhow = "1.0.71"
+sled = "0.34.7"
+lazy_static = "1.4.0"
+libloading = "0.8.0"
+async-trait = "0.1.69"
+tokio = { version = "1.29.1", features = ["rt","rt-multi-thread","time","macros","sync"] }
+notify = "6.0.1"
+
+log = "0.4.19"
+env_logger = "0.10.0"
+
+[profile.release]
+# Enable link-time optimization, eliminates more code and inlines across crate boundaries.
+# Default: false
+lto = true
+
+# codegen-units of 1 gives best optimization, but disables parallel building.
+# Default: 16
+codegen-units = 1
+
+# The default optimization level is 3 for release mode builds.
+# 0 means disable optimization and is the default for debug mode buids.
+# (Setting opt-level=1 for debug builds is a good way of speeding them up a bit.)
+# "s" means optimize for size, "z" reduces size even more.
+opt-level = 3
+
+
+[build]
+rustflags = ["--cfg", "tokio_unstable"] # export RUSTFLAGS="--cfg tokio_unstable"
