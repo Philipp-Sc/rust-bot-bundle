@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Array of all features
-features=("ChainRegistry")
+#features=("ChainRegistry")
 
-#features=("ChainRegistry" "Params" "TallyResults" "Pool" "Validators" "GovernanceProposalFetch" "GovernanceProposalView")
+features=("ChainRegistry" "Params" "TallyResults" "Pool" "Validators" "GovernanceProposalFetch" "GovernanceProposalView")
 
 # Loop over the features
 for feature in "${features[@]}"
