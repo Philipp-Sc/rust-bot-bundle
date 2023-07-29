@@ -14,7 +14,7 @@ do
    if [ "$USE_DOCKER" = "1" ] || [ ! -f Cargo.toml ]; then
         docker run --rm -it -e RUSTFLAGS="--cfg tokio_unstable" -v "$(pwd)":/usr/src/workspace -w /usr/src/workspace rust cargo build --release --no-default-features --features "$feature EnvLogger"
    else
-        cargo build --release --no-default-features --features "$feature EnvLogger"
+        RUSTFLAGS="--cfg tokio_unstable" cargo build --release --no-default-features --features "$feature EnvLogger"
    fi
    # Move the output to a .so file with the name of the feature
    mv target/release/librust_bot_plugin.so ../rust-bot/bin/lib/lib${feature}.so
