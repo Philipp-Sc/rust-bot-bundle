@@ -25,7 +25,7 @@ Create an Alias for Cargo:
 ## Build the plugins
 ```bash 
 cd rust-bot-plugin
-./build 
+USE_DOCKER=1  ./build.sh
 ```
 
 ## Run the bot
