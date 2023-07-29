@@ -19,12 +19,11 @@ docker pull rust
 Create an Alias for Cargo:
 
 ```bash
- alias cargo='docker run --rm -it -v "$(pwd)":/usr/src/workspace -w /usr/src/workspace rust cargo'
+ alias cargo='docker run --rm -it -e RUSTFLAGS="--cfg tokio_unstable" -v "$(pwd)":/usr/src/workspace -w /usr/src/workspace rust cargo'
 ```
 
 ## Build the plugins
-```bash
-export RUSTFLAGS="--cfg tokio_unstable"
+```bash 
 cd rust-bot-plugin
 ./build 
 ```
